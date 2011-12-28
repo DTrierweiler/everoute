@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "everoute"
   gem.homepage = "http://github.com/DTrierweiler/everoute"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "A small gem to find routes in Eve Online"
+  gem.description = "Parses the evemaps website and makes these information available in Ruby"
   gem.email = "trierweiler@dievision.de"
   gem.authors = ["Daniel Trierweiler"]
   # dependencies defined in Gemfile
