@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "everoute"
-  s.version = "0.0.2"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Trierweiler"]
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "lib/everoute.rb",
     "lib/evesystem.rb",
     "pkg/everoute-0.0.1.gem",
+    "pkg/everoute-0.0.2.gem",
     "spec/everoute_spec.rb",
     "spec/evesystem_spec.rb",
     "spec/spec_helper.rb"
