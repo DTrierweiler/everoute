@@ -22,7 +22,6 @@ class Everoute
       next if i == 0
       sys_string << ":" + sys
     end
-    puts sys_string
     page = @agent.get BASE_URL+sys_string
     arr = page.parser.xpath('//html/body/div/div/div[2]/div[2]/div/div/table/tr')
     route = []
