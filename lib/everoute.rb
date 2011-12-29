@@ -14,12 +14,15 @@ class Everoute
     @agent = Mechanize.new
   end
 
-  def travel(system_arr)
-    sys_string = system_arr[0].clone
+  def travel(system_arr, hisec=0)
+    sys_string = ""
+    sys_string << "2:" if hisec == "1"
+    sys_string << system_arr[0]
     system_arr.each_with_index do |sys, i|
       next if i == 0
       sys_string << ":" + sys
     end
+    puts sys_string
     page = @agent.get BASE_URL+sys_string
     arr = page.parser.xpath('//html/body/div/div/div[2]/div[2]/div/div/table/tr')
     route = []
@@ -33,11 +36,11 @@ class Everoute
     route
   end
 
-  def find_tradehubs(start_sys)
+  def find_tradehubs(start_sys, hisec)
     output = ""
     TRADEHUBS.each do |hub|      
       temp_arr = [start_sys, hub]
-      route = travel(temp_arr)
+      route = travel(temp_arr, hisec)
       output << "#{hub}: #{route.size}  "
     end
     output
