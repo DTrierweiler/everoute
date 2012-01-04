@@ -35,12 +35,13 @@ class Everoute
     route
   end
 
+  # The # of jumps has to be reduced by 1, cause the first system isn't really a jump
   def find_tradehubs(start_sys, hisec)
     output = ""
     TRADEHUBS.each do |hub|      
       temp_arr = [start_sys, hub]
       route = travel(temp_arr, hisec)
-      output << "#{hub}: #{route.size}  "
+      output << "#{hub}: #{route.size-1}  "
     end
     output
   end
