@@ -6,7 +6,7 @@ require 'evesystem'
 class Everoute
 
   BASE_URL = 'http://evemaps.dotlan.net/route/'
-  TRADEHUBS = %w(Jita Rens Hek Amarr Dodixie)
+  TRADEHUBS = {:jita => 30000142, :rens => 30002510, :hek => 30002053, :amarr => 30002187, :dodixie => 30002659}
 
   attr_accessor :route
 
@@ -38,12 +38,14 @@ class Everoute
   # The # of jumps has to be reduced by 1, cause the first system isn't really a jump
   def find_tradehubs(start_sys, hisec)
     output = ""
-    TRADEHUBS.each do |hub|      
-      temp_arr = [start_sys, hub]
+    pretty_out = ""
+    TRADEHUBS.keys.each do |hub|      
+      temp_arr = [start_sys, hub.to_s.capitalize]
       route = travel(temp_arr, hisec)
-      output << "#{hub}: #{route.size-1}  "
+      pretty_out << "#{hub.to_s.capitalize}: #{route.size-1}  "
+      output << "<url=showinfo:5//#{TRADEHUBS[hub]}>#{hub.to_s.capitalize}</url>: #{route.size-1}  "
     end
-    output
+    return output, pretty_out
   end
 
 end
